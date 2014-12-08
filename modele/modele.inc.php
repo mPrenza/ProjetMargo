@@ -1,7 +1,7 @@
 <?php
 define('USER','root');
 define('MDP', 'joliverie');
-define('DSN', 'mysql:host=localhost;dbname=baselafleur1');
+define('DSN', 'mysql:host=localhost;dbname=margo');
 //    define('DSN', 'oci:dbname=amnesix.sup.stp.lycee-joliverie.fr:1521/info.sup');
 //    define('DSN', 'oci:dbname=localhost:1521/XE');
 
@@ -25,18 +25,18 @@ function deconnecter($connexion) {
 }
 
 
-// liste de tous les produits
-function getListeProduits($conn) {
-    $sql = "SELECT * FROM produit";
+// liste de toutes les personnes
+function getListePersonnes($conn) {
+    $sql = "SELECT * FROM personne";
     $stmt = $conn->query($sql);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-// liste de tous les produits
-function getListeProduitsParCateg($conn, $id) {
+// liste de toutes les personnes par categ
+function getListePersonnesParCateg($conn, $id) {
 //    $sql = "SELECT * FROM produit WHERE pdt_categorie='".$id."'";
 //    $stmt = $conn->query($sql);
-    $sql = "SELECT * FROM produit WHERE pdt_categorie=?";
+    $sql = "SELECT * FROM personne WHERE pdt_categorie=?";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(1,$id);
     $stmt->execute();
@@ -46,10 +46,10 @@ function getListeProduitsParCateg($conn, $id) {
 
 
 // la liste des catégories de produits
-function getListeCategoriesProduits($conn) {
-    $sql = "SELECT * FROM categorie";
-    $stmt = $conn->query($sql);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+//function getListeCategoriesProduits($conn) {
+//    $sql = "SELECT * FROM categorie";
+//    $stmt = $conn->query($sql);
+//    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+//}
 
 ?>
